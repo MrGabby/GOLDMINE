@@ -1,0 +1,43 @@
+<div class="container-fluid " id="search">
+    
+        <input id="sbar" class="sbar" type="text" style=" width: 500px; 
+        border-radius: 5px 5px 5px 5px; " placeholder="Search Product Here" #box>
+        <button id="sbar" class="btn btn-warning" style="margin-left:15px;"  (click)="LoadByName(box.value)">Search</button>
+        
+</div>
+
+<div   class="container-fluid">
+    <div class="row" id="products" >
+        <div *ngFor="let product of products" class='col-xs-6 col-sm-3 col-md-3'>
+            <div class="card" style="height: 580px; background-color: ivory;   border-color: black; margin:10px">
+                <div class='card-body'>
+                    <img src="{{imgbasePath}}{{product.ImageUrl}}" style="border-radius: 7px 7px 7px 7px;"/> <br> <br>
+                    
+                   
+                    <h4 class='card-title'>
+                        <label>{{product.Productname}}</label>
+                    </h4>
+                    <p class='card-text' style="color: brown;  font-size: 20px; ">
+                        <span class='inr-sign'></span>
+                        <label class='price'><b> ₹ {{product.Price}} </b></label>
+                    </p>
+                    <p class='card-text' style=" float: right;">
+                        <span class='inr-sign'></span>
+                        <label class='cart'>22Kt Gold</label>
+                    </p>
+                    <p class='card-text' >
+                        <span class='inr-sign'></span>
+                        <label class='weight'> <b>Weight : </b>{{product.Weight}} Grams</label>
+                    </p>
+                  
+                    <h6 class="text-success">Free shipping</h6> 
+                    <a class='btn btn-primary' style="color: white;" (click)="addtocart(product)">Add to Cart</a>
+                    <a  class='btn btn-success' style="margin-left: 70px;color: white;">Buy Now</a>
+                </div>
+            <div>
+        </div>
+    </div>
+    <div *ngIf="products && products?.length == 0" class="col-xs-12 col-md-12">
+        {{statusMessage}}
+    </div>
+</div>
